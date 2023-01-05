@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h1>These are the books currently available in record.</h1>
+
+<table style="width:100%">
+  <tr style="text-align:center; ">
+    <th>Book</th>
+  </tr>
+  <%= $books.each do |item| %>
+    <tr>
+      <td>
+        <%= item %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<p>have a great day!</p>
+</body>
+</html>
