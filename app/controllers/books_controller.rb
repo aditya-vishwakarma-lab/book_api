@@ -14,8 +14,10 @@ class BooksController < ApplicationController
     # @books = Book.search(params[:query])
 
     if params[:query]
-      @books = Rails.cache.fetch(params[:query]) do
-        Book.search(params[:query],expires_in: 7.days)
+      @books = Rails.cache.fetch(params[:query], expires_in: 1.week) do
+        logger.info "not using cached data"
+        Book.search(params[:query])
+        # console
       end
     else
       @books = Book.all

@@ -20,7 +20,8 @@ class MailBookRecordJob < ApplicationJob
     $books.each do |book|
       collection.insert_one(book.as_json)
     end
-    # collection.
+    # collection.drop
+    # puts collection.count_documents  # collection.
 
     AdminMailer.mail_book_record($books).deliver_now
   end

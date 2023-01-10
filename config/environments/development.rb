@@ -27,7 +27,8 @@ Rails.application.configure do
   # else
   #   config.action_controller.perform_caching = false
   #
-  #   config.cache_store = :null_store
+  #   config.cache_store = :null_store    client = Mongo::Client.new('mongodb://127.0.0.1:27017/test')
+
   # end
 
   if Rails.root.join("tmp/caching-dev.txt").exist?
