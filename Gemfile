@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.3"
 # Newrelic gem
-gem 'newrelic_rpm'
 # Mongo gems
 gem "mongo", "~> 2"
 #  Gems for scheduling email
