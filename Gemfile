@@ -7,7 +7,7 @@ ruby "3.1.3"
 gem "mongo", "~> 2"
 #  Gems for scheduling email
 gem 'whenever', require: false
-gem "sidekiq"
+# gem "sidekiq"
 # Gems for sphinx search engine
 gem "thinking-sphinx"
 gem "pg", "~> 1.1"
