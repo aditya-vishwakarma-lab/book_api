@@ -1,27 +1,20 @@
-# class BooksController < JSONAPI::ResourceController
-#   skip_before_action :verify_authenticity_token
-# end
-
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show update destroy ]
 
+  # GET /books/search
+  def search
+    query = params[:query]
+    version = Book.maximum(:updated_at).to_i # Get the latest update time of any book
+    redis_key = "search_results:#{query}:#{version}"
+    results = Rails.cache.fetch(cache_key, expires_in: 1.week) do
+      Book.search(query)
+    end
+    render json: results
+  end
+
   # GET /books
   def index
-    # @books = Rails.cache.fetch(cache_key_with_version, expires_in: 7.days) do
-    # Competitor::API.find_price(id)
-
-    # end
-    # @books = Book.search(params[:query])
-
-    if params[:query]
-      @books = Rails.cache.fetch(params[:query], expires_in: 1.week) do
-        logger.info "not using cached data"
-        Book.search(params[:query])
-        # console
-      end
-    else
-      @books = Book.all
-    end
+    @books = Book.all
     render json: @books
   end
 
