@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   def search
     query = params[:query]
     version = Book.maximum(:updated_at).to_i # Get the latest update time of any book
-    redis_key = "search_results:#{query}:#{version}"
+    cache_key = "search_results:#{query}:#{version}"
     results = Rails.cache.fetch(cache_key, expires_in: 1.week) do
       Book.search(query)
     end
