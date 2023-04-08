@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   ThinkingSphinx::Callbacks.append(
-    self, :behaviours => [:sql]
+    self, :behaviours => [:real_time]
   )
 
   # def self.search_query(query)

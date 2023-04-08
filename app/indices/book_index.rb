@@ -1,7 +1,5 @@
-ThinkingSphinx::Index.define :book, :with => :active_record do
+ThinkingSphinx::Index.define :book, :with => :real_time do
   indexes title
   indexes author
   indexes description
-
-  has  language, created_at, updated_at
 end
